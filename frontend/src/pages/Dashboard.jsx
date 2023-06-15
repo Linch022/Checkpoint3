@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DragDropContext } from "react-beautiful-dnd";
 import TaskContainer from "../components/DashboardComponent/TaskContainer";
 import useApi from "../services/useApi";
 import statusTask from "../utils/StatusTask";
@@ -50,43 +49,30 @@ function Dashboard() {
         console.warn(err);
       });
   }, [reload]);
-
-  const onDragEnd = () => {
-    console.warn("toto");
-  };
-
   return (
     <div className="dashboard">
       {user ? (
         <>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <div className="task-container">
-              <TaskContainer
-                tasks={progressTask}
-                type="inProgress"
-                setReload={setReload}
-                reload={reload}
-                key="inprogress"
-                column="inprogress"
-              />
-              <TaskContainer
-                tasks={finishedTask}
-                type="finished"
-                setReload={setReload}
-                reload={reload}
-                key="finished"
-                column="finished"
-              />
-              <TaskContainer
-                tasks={archivedTask}
-                type="archived"
-                setReload={setReload}
-                reload={reload}
-                key="archived"
-                column="archived"
-              />
-            </div>
-          </DragDropContext>
+          <div className="task-container">
+            <TaskContainer
+              tasks={progressTask}
+              type="inProgress"
+              setReload={setReload}
+              reload={reload}
+            />
+            <TaskContainer
+              tasks={finishedTask}
+              type="finished"
+              setReload={setReload}
+              reload={reload}
+            />
+            <TaskContainer
+              tasks={archivedTask}
+              type="archived"
+              setReload={setReload}
+              reload={reload}
+            />
+          </div>
           <div className="creation-container">
             <CreationTask
               category={category}

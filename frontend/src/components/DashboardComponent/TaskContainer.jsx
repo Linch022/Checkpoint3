@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Droppable } from "react-beautiful-dnd";
 import TaskItem from "./TaskItem";
 
 function TaskContainer({ tasks, type, setReload, reload }) {
@@ -18,26 +16,17 @@ function TaskContainer({ tasks, type, setReload, reload }) {
   return (
     <div className={`${type}-container`}>
       <h3>{title}</h3>
-      <Droppable droppableId={type}>
-        {(provider) => (
-          <div
-            {...provider.droppableProps}
-            ref={provider.innerRef}
-            className="task-item-container"
-          >
-            {tasks.map((task, index) => (
-              <TaskItem
-                task={task}
-                key={task.id}
-                type={type}
-                setReload={setReload}
-                reload={reload}
-                index={index}
-              />
-            ))}
-          </div>
-        )}
-      </Droppable>
+      <div className="task-item-container">
+        {tasks.map((task) => (
+          <TaskItem
+            task={task}
+            key={task.id}
+            type={type}
+            setReload={setReload}
+            reload={reload}
+          />
+        ))}
+      </div>
     </div>
   );
 }
