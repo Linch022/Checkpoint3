@@ -1,0 +1,35 @@
+.login-container {
+  position: absolute;
+  width: 300px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  border: 1px solid black;
+  padding-top: 15px;
+}
+
+.choice-login {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.choice-login button {
+  padding: 2px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form * {
+  margin: 15px auto;
+  width: 80%;
+  padding: 3px;
+}
